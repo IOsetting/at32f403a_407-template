@@ -1,0 +1,4 @@
+erase
+loadfile Build/app.bin 0x08000000 noreset
+reset
+exit

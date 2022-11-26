@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/User/**",
+                "${workspaceFolder}/Libraries/cmsis/cm4/device_support/**",
+                "${workspaceFolder}/Middlewares/FreeRTOS/include",
+                "${workspaceFolder}/Middlewares/FreeRTOS/portable/GCC/ARM_CM4F",
+                "/opt/gcc-arm/arm-gnu-toolchain-12.2.mpacbti-bet1-x86_64-arm-none-eabi/arm-none-eabi/include",
+                "/opt/gcc-arm/arm-gnu-toolchain-12.2.mpacbti-bet1-x86_64-arm-none-eabi/lib/gcc/arm-none-eabi/12.2.0/include"
+            ],
+            "defines": [
+                "AT32F403ACGT7"
+            ],
+            "compilerPath": "/opt/gcc-arm/arm-gnu-toolchain-12.2.mpacbti-bet1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc",
+            "cStandard": "gnu99",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "gcc-arm",
+            "configurationProvider": "ms-vscode.makefile-tools"
+        }
+    ],
+    "version": 4
+}
