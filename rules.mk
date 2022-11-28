@@ -38,7 +38,7 @@ ARCH_FLAGS	:= -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
 DEBUG_FLAGS ?= -gdwarf-2
 
 # c flags
-OPT			?= -O0
+OPT			?= -O3
 CSTD		?= -std=c99
 TGT_CFLAGS 	+= $(ARCH_FLAGS) $(DEBUG_FLAGS) $(OPT) $(CSTD) $(addprefix -D, $(LIB_FLAGS)) -Wall
 
@@ -62,7 +62,7 @@ TGT_INCFLAGS := $(addprefix -I $(TOP)/, $(INCLUDES))
 
 .PHONY: all clean flash echo
 
-all: $(BDIR)/$(PROJECT).elf $(BDIR)/$(PROJECT).bin
+all: $(BDIR)/$(PROJECT).elf $(BDIR)/$(PROJECT).bin $(BDIR)/$(PROJECT).hex
 
 # for debug
 echo:
@@ -94,12 +94,19 @@ $(BDIR)/$(PROJECT).elf: $(OBJS) $(TOP)/$(LDSCRIPT)
 	@printf "  OBJCP\t$@\n"
 	$(Q)$(OBJCOPY) -O binary  $< $@
 
+%.hex: %.elf
+	@printf "  OBJCP\t$@\n"
+	$(Q)$(OBJCOPY) -O ihex  $< $@
+
 clean:
 	rm -rf $(BDIR)/*
 
 flash:
 ifeq ($(FLASH_PROGRM),jlink)
 	$(JLINKEXE) -device $(JLINK_DEVICE) -if swd -speed 4000 -CommanderScript $(TOP)/Misc/flash.jlink
+else ifeq ($(FLASH_PROGRM),pyocd)
+	$(PYOCD_EXE) erase -c -t $(PYOCD_DEVICE) --config $(TOP)/Misc/pyocd.yaml
+	$(PYOCD_EXE) load $(BDIR)/$(PROJECT).hex -t $(PYOCD_DEVICE) --config $(TOP)/Misc/pyocd.yaml
 else
 	@echo "FLASH_PROGRM is invalid\n"
 endif
