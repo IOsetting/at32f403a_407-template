@@ -8,11 +8,11 @@ BUILD_DIR		= Build
 
 # Enable printf float %f support, y:yes, n:no
 ENABLE_PRINTF_FLOAT	?= y
-# Enable FPU
-USE_FPU			?= n
+# Build with CMSIS DSP functions, y:yes, n:no
+USE_DSP			?= y
 # Build with FreeRTOS, y:yes, n:no
 USE_FREERTOS	?= n
-# Programmer, jlink, pyocd
+# Programmer, jlink or pyocd
 FLASH_PROGRM	?= pyocd
 
 
@@ -67,7 +67,7 @@ INCLUDES	+= Middlewares/FreeRTOS/include \
 			Middlewares/FreeRTOS/portable/GCC/ARM_CM4F
 endif
 
-ifeq ($(USE_FPU),y)
+ifeq ($(USE_DSP),y)
 CFILES 		+= Libraries/cmsis/dsp/Source/BasicMathFunctions/BasicMathFunctions.c \
 		Libraries/cmsis/dsp/Source/BayesFunctions/BayesFunctions.c \
 		Libraries/cmsis/dsp/Source/CommonTables/CommonTables.c \
