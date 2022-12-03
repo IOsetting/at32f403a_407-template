@@ -36,7 +36,10 @@ extern "C" {
 #include "at32f403a_407.h"
 
 /* exported functions ------------------------------------------------------- */
-void system_clock_config(void);
+void sclk_240m_hext_config(void);
+void sclk_96m_hext_config(void);
+void sclk_240m_hick_config(void);
+void sclk_64m_hick_config(void);
 
 #ifdef __cplusplus
 }

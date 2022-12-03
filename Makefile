@@ -40,7 +40,7 @@ LIB_FLAGS		= USE_STDPERIPH_DRIVER AT32F403ACGT7
 CDIRS	:= User \
 		Libraries/cmsis/cm4/device_support \
 		Libraries/drivers/src \
-		Libraries/debug
+		Libraries/bsp/src
 		
 # C source files (if there are any single ones)
 CFILES := 
@@ -55,7 +55,7 @@ INCLUDES	:= User \
 			Libraries/cmsis/cm4/core_support \
 			Libraries/cmsis/cm4/device_support \
 			Libraries/drivers/inc \
-			Libraries/debug
+			Libraries/bsp/inc
 
 ifeq ($(USE_FREERTOS),y)
 CDIRS		+= Middlewares/FreeRTOS \
