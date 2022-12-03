@@ -1,5 +1,5 @@
-#ifndef __DEBUG_H
-#define __DEBUG_H
+#ifndef __AT32F403A_407_DELAY_H
+#define __AT32F403A_407_DELAY_H
 
 #ifdef __cplusplus
 extern "C" {
