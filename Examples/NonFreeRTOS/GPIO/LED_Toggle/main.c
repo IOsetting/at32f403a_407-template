@@ -1,5 +1,6 @@
 #include "at32f403a_407_clock.h"
 #include "at32f403a_407_delay.h"
+#include "at32f403a_407_printf.h"
 
 
 /**
@@ -61,6 +62,8 @@ int main(void)
 {
   sclk_240m_hext_config();
 
+  uart_print_init(115200);
+
   /* initialize delay function */
   delay_init();
 
@@ -69,6 +72,7 @@ int main(void)
 
   while(1)
   {
+    printf("echo\r\n");
     at32_led_toggle();
     delay_ms(1000);
   }
