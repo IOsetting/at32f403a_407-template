@@ -9,9 +9,11 @@ BUILD_DIR		= Build
 # Enable printf float %f support, y:yes, n:no
 ENABLE_PRINTF_FLOAT	?= y
 # Build with CMSIS DSP functions, y:yes, n:no
-USE_DSP			?= y
+USE_DSP			?= n
 # Build with FreeRTOS, y:yes, n:no
 USE_FREERTOS	?= n
+# Build with FatFs, y:yes, n:no
+USE_FATFS		?= y
 # Programmer, jlink or pyocd
 FLASH_PROGRM	?= pyocd
 
@@ -24,17 +26,17 @@ ARM_TOOCHAIN	?= /opt/gcc-arm/arm-gnu-toolchain-12.2.mpacbti-bet1-x86_64-arm-none
 
 # path to JLinkExe
 JLINKEXE		?= /opt/SEGGER/JLink/JLinkExe
-JLINK_DEVICE	?= AT32F403ACGT7
+JLINK_DEVICE	?= AT32F403AVGT7
 # path to PyOCD
 PYOCD_EXE		?= pyocd
-PYOCD_DEVICE	?= _at32f403acgt7
+PYOCD_DEVICE	?= _at32f403avgt7
 
 ##### Paths ############
 
 # Link descript file for this chip
 LDSCRIPT		= Libraries/cmsis/cm4/device_support/startup/gcc/linker/AT32F403AxG_FLASH.ld
 # Library build flags
-LIB_FLAGS		= USE_STDPERIPH_DRIVER AT32F403ACGT7
+LIB_FLAGS		= USE_STDPERIPH_DRIVER AT32F403AVGT7
 
 # C source folders
 CDIRS	:= User \
@@ -84,6 +86,12 @@ CFILES 		+= Libraries/cmsis/dsp/Source/BasicMathFunctions/BasicMathFunctions.c \
 
 INCLUDES	+= Libraries/cmsis/dsp/PrivateInclude \
 			Libraries/cmsis/dsp/ComputeLibrary/Include
+endif
+
+ifeq ($(USE_FATFS),y)
+CDIRS		+= Middlewares/FatFs/source
+
+INCLUDES	+= Middlewares/FatFs/source
 endif
 
 include ./rules.mk
