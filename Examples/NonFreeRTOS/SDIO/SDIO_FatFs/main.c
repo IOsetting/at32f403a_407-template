@@ -26,10 +26,11 @@
 
 #include <stdbool.h>
 #include <string.h>
-#include "at32_sdio.h"
+
 #include "at32f403a_407_clock.h"
 #include "at32f403a_407_delay.h"
 #include "at32f403a_407_printf.h"
+#include "at32f403a_407_bsp_sdio.h"
 #include "ff.h"
 
 /** @addtogroup AT32F403A_periph_examples

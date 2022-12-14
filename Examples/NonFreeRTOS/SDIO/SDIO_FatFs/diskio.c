@@ -11,7 +11,7 @@
 #include "diskio.h"		/* Declarations of disk functions */
 
 #include <string.h>
-#include "at32_sdio.h"		/* Example: Header file of existing MMC/SDC contorl module */
+#include "at32f403a_407_bsp_sdio.h"		/* Example: Header file of existing MMC/SDC contorl module */
 
 /* Definitions of physical drive number for each drive */
 #define DEV_RAM		0	/* Example: Map Ramdisk to physical drive 0 */

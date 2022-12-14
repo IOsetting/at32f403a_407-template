@@ -26,8 +26,8 @@
   */
 
 /* define to prevent recursive inclusion -------------------------------------*/
-#ifndef __AT32_SDIO_H
-#define __AT32_SDIO_H
+#ifndef __AT32F403A_407_BSP_SDIO_H
+#define __AT32F403A_407_BSP_SDIO_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -336,7 +336,7 @@ typedef struct
 /**
   * sdio paremeters
   */
-#define NULL                             0
+//#define NULL                             0
 #define SDIO_STATIC_FLAGS                ((uint32_t)0x000005FF)
 #define SDIO_CMD0TIMEOUT                 ((uint32_t)0x00020000)
 #define SDIO_DATATIMEOUT                 ((uint32_t)0xFFFFFFFF)
@@ -523,4 +523,4 @@ void sd_dma_config(uint32_t *mbuf, uint32_t buf_size, dma_dir_type dir);
 }
 #endif
 
-#endif /* __AT32_SDIO_H */
+#endif /* __AT32F403A_407_BSP_SDIO_H */
