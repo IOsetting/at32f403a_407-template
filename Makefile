@@ -7,13 +7,15 @@ BUILD_DIR		= Build
 ##### Options #####
 
 # Enable printf float %f support, y:yes, n:no
-ENABLE_PRINTF_FLOAT	?= y
+ENABLE_PRINTF_FLOAT	?= n
 # Build with CMSIS DSP functions, y:yes, n:no
 USE_DSP			?= n
 # Build with FreeRTOS, y:yes, n:no
 USE_FREERTOS	?= n
 # Build with FatFs, y:yes, n:no
-USE_FATFS		?= y
+USE_FATFS		?= n
+# Build with Helix MP3 lib, y:yes, n:no
+USE_HELIX		?= n
 # Programmer, jlink or pyocd
 FLASH_PROGRM	?= pyocd
 
@@ -92,6 +94,15 @@ ifeq ($(USE_FATFS),y)
 CDIRS		+= Middlewares/FatFs/source
 
 INCLUDES	+= Middlewares/FatFs/source
+endif
+
+ifeq ($(USE_HELIX),y)
+CDIRS		+= Middlewares/Helix \
+		Middlewares/Helix/real
+
+INCLUDES	+= Middlewares/Helix \
+		Middlewares/Helix/pub \
+		Middlewares/Helix/real
 endif
 
 include ./rules.mk
